@@ -75,7 +75,7 @@
             @endguest
 
 	          @if (Auth::check() && Auth::user()->role === 'admin')
-                <li><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
+                <li><a href="{{ route('citas.index') }}">Admin Dashboard</a></li>
             @endif
       </div>
 

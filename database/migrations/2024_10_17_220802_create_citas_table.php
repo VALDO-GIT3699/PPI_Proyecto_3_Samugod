@@ -19,13 +19,14 @@ return new class extends Migration
             $table->string('apellidoma',100);
             $table->string('apellidopa',100);
             $table->string('telefono', 15);
-            $table->date('fecha'); // Fecha de la cita
+            $table->timestamp('fecha'); // Fecha de la cita
             $table->time('hora'); // Hora de la cita
             $table->string('descripcion');  // Descripción de la cita
             $table->string('consultorio');
             $table->string('doctor');
             $table->enum('estado', ['pendiente', 'confirmada', 'cancelada'])->default('pendiente'); // Estado de la cita
             $table->timestamps(); // Campos created_at y updated_at
+            $table->softDeletes();
         });
     }
 

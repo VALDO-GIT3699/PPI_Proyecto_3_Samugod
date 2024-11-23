@@ -6,137 +6,246 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Detalle de Cita</title>
     <style>
-        /* Estilos generales para la página */
-        body {
-            font-family: Arial, sans-serif; /* Fuente general */
-            margin: 0; /* Sin margen */
-            padding: 0; /* Sin padding */
-            background-color: #f8f9fa; /* Fondo claro */
-        }
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* Estilos para centrar el contenido */
-        .container {
-            padding: 60px 20px; /* Espaciado superior e inferior */
-            display: flex; /* Usar flexbox para centrar */
-            flex-direction: column; /* Colocar elementos en columna */
-            align-items: center; /* Centrar horizontalmente */
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: linear-gradient(to right, rgba(0, 123, 255, 0.7), rgba(0, 123, 255, 0.4)), 
+                        url('https://dentalpyp.clinic/wp-content/uploads/2024/04/Los-Instrumentos-de-Dentista-Mas-Buscados.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #343a40;
+}
 
-        /* Estilo para el título */
-        h1 {
-            font-size: 2.5rem; /* Tamaño del título */
-            color: #343a40; /* Color oscuro */
-            margin-bottom: 30px; /* Espacio debajo del título */
-        }
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centra todo el contenido dentro del contenedor */
+}
 
-        /* Estilo para la lista */
-        ul {
-            list-style-type: none; /* Sin viñetas */
-            padding: 0; /* Sin padding */
-            margin: 0; /* Sin margen */
-            font-size: 1.2rem; /* Tamaño de fuente */
-            color: #495057; /* Color del texto */
-        }
+h1 {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
 
-        /* Estilo para los elementos de la lista */
-        li {
-            margin-bottom: 10px; /* Espacio entre elementos */
-            padding: 10px; /* Espaciado interno */
-            background-color: #ffffff; /* Fondo blanco */
-            border: 1px solid #dee2e6; /* Borde gris claro */
-            border-radius: 5px; /* Bordes redondeados */
-            width: 100%; /* Ancho completo */
-            max-width: 600px; /* Ancho máximo de la lista */
-        }
+/* Estilo avanzado para la lista */
+.details-list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr; /* Para que cada item ocupe toda la columna */
+    gap: 15px; /* Espacio entre los elementos */
+}
 
-        /* Estilo para el enlace */
-        a {
-            text-decoration: none; /* Sin subrayado */
-            color: #007bff; /* Color azul */
-            font-size: 1.2rem; /* Tamaño de fuente del enlace */
-            margin: 20px 0; /* Espacio arriba y abajo */
-        }
+.detail-item {
+    background: rgba(255, 255, 255, 0.9);
+    margin-bottom: 15px;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Alineación de texto centrada */
+    transition: all 0.3s ease;
+}
 
-        a:hover {
-            text-decoration: underline; /* Subrayado al pasar el mouse */
-        }
+.detail-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
 
-        /* Estilo para el formulario de eliminación */
-        form {
-            margin: 20px 0; /* Espacio arriba y abajo del formulario */
-        }
+.detail-label {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
 
-        input[type="submit"] {
-            background-color: #dc3545; /* Color rojo para botón de eliminar */
-            color: white; /* Texto blanco */
-            border: none; /* Sin borde */
-            border-radius: 5px; /* Bordes redondeados */
-            padding: 10px 20px; /* Espaciado interno */
-            font-size: 1rem; /* Tamaño de fuente */
-            cursor: pointer; /* Cursor de mano */
-        }
+.detail-item span {
+    display: block; /* Asegura que cada valor esté en su propia línea */
+    font-size: 1rem;
+    color: #495057;
+}
 
-        input[type="submit"]:hover {
-            background-color: #c82333; /* Color rojo oscuro al pasar el mouse */
-        }
+/* Alineación para el enlace (Volver) */
+a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #007bff;
+    transition: color 0.3s ease;
+    display: inline-block; /* Hacemos que el enlace se comporte como un bloque */
+    margin-top: 20px;
+    text-align: center;
+}
 
-        .alert {
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1050; /* Asegúrate de que esté por encima de otros elementos */
-            width: 90%; /* Ajusta el ancho según necesites */
-            border-radius: 8px; /* Esquinas redondeadas */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-            transition: all 0.3s ease; /* Transición suave */
-        }
+a:hover {
+    color: #0056b3;
+}
 
-        .alert-danger {
-                background-color: #f8d7da; /* Color de fondo */
-                color: #721c24; /* Color de texto */
-        }
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Alertas */
+.alert {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .detail-item {
+        padding: 15px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    .detail-label {
+        font-size: 1rem;
+    }
+
+    .detail-item span {
+        width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .detail-item {
+        padding: 10px;
+    }
+
+    .btn {
+        font-size: 0.8rem;
+        padding: 8px 10px;
+    }
+
+    .detail-label {
+        font-size: 0.9rem;
+    }
+}
+
 
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Detalle de la Cita</h1>
-                    <!-- Mensajes de error -->
-            @if($errors->any())
-                <div class="alert alert-danger text-center" role="alert" style="margin: 10px auto; width: 80%; border-radius: 5px; font-size: 16px;">
-                    <strong>¡Oops! Ha ocurrido un problema:</strong>
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
 
-        <ul>
-            <li>Nombre: {{ $citas->nombre }}</li>
-            <li>Apellido Paterno: {{ $citas->apellidopa }}</li>
-            <li>Apellido Materno: {{ $citas->apellidoma }}</li>
-            <li>Correo Electrónico: {{ $citas->email }}</li>
-            <li>Teléfono: {{ $citas->telefono }}</li>
-            <li>Fecha: {{ $citas->fecha }}</li>
-            <li>Consultorio: {{ $citas->consultorio }}</li>
-            <li>Doctor: {{ $citas->doctor }}</li>
-            <li>Descripción: {{ $citas->descripcion }}</li>
-            <li>Estado: {{ $citas->estado }}</li>
+        <!-- Mensajes de error -->
+        @if($errors->any())
+            <div class="alert alert-danger text-center" role="alert" style="margin: 10px auto; width: 80%; border-radius: 5px; font-size: 16px;">
+                <strong>¡Oops! Ha ocurrido un problema:</strong>
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <!-- Lista de detalles -->
+        <ul class="details-list">
+            <li class="detail-item">
+                <span class="detail-label">Nombre:</span> {{ strtoupper ($citas->nombre) }}
+            </li>
+            <li class="detail-item">
+                <span class="detail-label">Apellido Paterno:</span> {{ strtoupper ($citas->apellidopa) }}
+            </li>
+            <li class="detail-item">
+                <span class="detail-label">Apellido Materno:</span> {{ strtoupper ($citas->apellidoma) }}
+            </li>
+            <li class="detail-item">
+                <span class="detail-label">Correo Electrónico:</span> {{ $citas->email }}
+            </li>
+            <li class="detail-item">
+                <span class="detail-label">Teléfono:</span> {{ $citas->telefono }}
+            </li>
+            <li class="detail-item">
+                <span class="detail-label">Fecha:</span> {{ $citas->fecha }}
+            </li>
+            <li class="detail-item">
+                <span class="detail-label">Consultorios:</span>
+                @foreach ($citas->consultorios as $consultorio)
+                    {{ strtoupper ($consultorio->tag) }}
+                @endforeach
+            </li>
+            <li class="detail-item">
+                <span class="detail-label">Doctor:</span> {{ strtoupper ($citas->doctor) }}
+            </li>
+            <li class="detail-item">
+                <span class="detail-label">Descripción:</span> {{ strtoupper ($citas->descripcion) }}
+            </li>
+            <li class="detail-item">
+                <span class="detail-label">Estado:</span> {{ strtoupper ($citas->estado) }}
+            </li>
         </ul>
 
         <hr>
 
-        <a href="{{ route('citas.edit', $citas) }}">Editar</a>
-        <a href="{{ route('citas.index', $citas) }}">Volver</a>
-        
-        <form action="{{ route('citas.destroy', $citas) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <input type="submit" value="Eliminar">
-        </form>
+        <a href="{{ route('citas.index', $citas) }}" class="btn btn-primary">Volver</a>
     </div>
 </body>
+
 </html>

@@ -4,118 +4,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Citas</title>
+    <title>Citas Profesionales</title>
     <style>
-        /* Estilos generales para la página */
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif; /* Fuente general */
-            margin: 0; /* Sin margen */
-            padding: 0; /* Sin padding */
-            background-color: #f8f9fa; /* Fondo claro */
+            font-family: 'Arial', sans-serif;
+            background-image: linear-gradient(to right, rgba(0, 123, 255, 0.7), rgba(0, 123, 255, 0.4)), 
+                              url('https://dentalpyp.clinic/wp-content/uploads/2024/04/Los-Instrumentos-de-Dentista-Mas-Buscados.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #343a40;
         }
 
-        /* Estilos para centrar el contenido */
         .container {
-            padding: 60px 20px; /* Espaciado superior e inferior */
-            display: flex; /* Usar flexbox para centrar */
-            flex-direction: column; /* Colocar elementos en columna */
-            align-items: center; /* Centrar horizontalmente */
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        /* Estilo para el título */
         h1 {
-            font-size: 2.5rem; /* Tamaño del título */
-            color: #343a40; /* Color oscuro */
-            margin-bottom: 30px; /* Espacio debajo del título */
+            font-size: 2.5rem;
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+            font-weight: bold;
         }
 
-        /* Estilos para el enlace */
         a {
-            text-decoration: none; /* Sin subrayado */
-            color: #007bff; /* Color azul */
-            font-size: 1.2rem; /* Tamaño de fuente del enlace */
-            margin-bottom: 20px; /* Espacio debajo del enlace */
+            text-decoration: none;
+            font-weight: 600;
+            color: #007bff;
+            transition: color 0.3s ease;
         }
 
         a:hover {
-            text-decoration: underline; /* Subrayado al pasar el mouse */
+            color: #0056b3;
         }
 
-        /* Estilos para la tabla */
+        /* Tabla */
         table {
-            width: 100%; /* Ancho completo */
-            border-collapse: collapse; /* Sin espacios entre celdas */
-            max-width: 1000px; /* Ancho máximo de la tabla */
-            margin-bottom: 20px; /* Espacio debajo de la tabla */
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
 
         th, td {
-            border: 1px solid #dee2e6; /* Borde gris claro */
-            padding: 12px; /* Espaciado interno */
-            text-align: left; /* Alinear texto a la izquierda */
+            padding: 15px;
+            text-align: left;
         }
 
         th {
-            background-color: #007bff; /* Fondo azul para encabezados */
-            color: white; /* Color blanco para texto en encabezados */
+            background-color: #007bff;
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2; /* Fondo gris claro para filas pares */
+        td {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
         }
 
-        tr:hover {
-            background-color: #e9ecef; /* Fondo gris oscuro al pasar el mouse */
+        tr:nth-child(even) td {
+            background-color: #e9ecef;
         }
 
-        /* Estilo para el botón de editar */
-        .edit-button {
-            color: #007bff; /* Color azul */
-            text-decoration: none; /* Sin subrayado */
+        tr:hover td {
+            background-color: #d1ecf1;
         }
 
-        .edit-button:hover {
-            text-decoration: underline; /* Subrayado al pasar el mouse */
+        /* Botones */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
         }
 
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Alertas */
         .alert {
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1050; /* Asegúrate de que esté por encima de otros elementos */
-            width: 90%; /* Ajusta el ancho según necesites */
-            border-radius: 8px; /* Esquinas redondeadas */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-            transition: all 0.3s ease; /* Transición suave */
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .alert-danger {
-                background-color: #f8d7da; /* Color de fondo */
-                color: #721c24; /* Color de texto */
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
 
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 8px 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Citas</h1>
-
+        @if (Auth::check() && Auth::user()->role === 'admin')
+        <h1>Citas Administrativas</h1>
         <p>
-            <a href="{{ route('citas.create') }}">Agregar Cita</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-primary">Volver</a>
         </p>
-                    <!-- Mensajes de error -->
-            @if($errors->any())
-                <div class="alert alert-danger text-center" role="alert" style="margin: 10px auto; width: 80%; border-radius: 5px; font-size: 16px;">
-                    <strong>¡Oops! Ha ocurrido un problema:</strong>
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
+        @if($errors->any())
+        <div class="alert alert-danger">
+            <strong>¡Oops! Ha ocurrido un problema:</strong>
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <table>
             <thead>
                 <tr>
@@ -129,6 +187,7 @@
                     <th>Descripción</th>
                     <th>Doctor</th>
                     <th>Estado</th>
+                    <th>Usuario</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -137,25 +196,89 @@
                 <tr>
                     <td>{{ $cita->id }}</td>
                     <td>
-                        <a href="{{ route('citas.show', $cita) }}">
-                            {{ $cita->nombre }}
-                        </a>
+                        <a href="{{ route('citas.show', $cita) }}">{{ strtoupper($cita->nombre) }}</a>
                     </td>
-                    <td>{{ $cita->apellidoma }}</td>
-                    <td>{{ $cita->apellidopa }}</td>
+                    <td>{{ strtoupper($cita->apellidoma) }}</td>
+                    <td>{{ strtoupper($cita->apellidopa) }}</td>
                     <td>{{ $cita->telefono }}</td>
-                    <td>{{ $cita->fecha->format('d/m/Y') }}</td>
-                    <td>{{ $cita->consultorio }}</td>
-                    <td>{{ $cita->descripcion }}</td>
-                    <td>{{ $cita->doctor }}</td>
-                    <td>{{ $cita->estado }}</td>
+                    <td>{{ $cita->fecha->diffForHumans() }}</td>
                     <td>
-                        <a href="{{ route('citas.edit', $cita) }}" class="edit-button">Editar</a>
+                        @foreach ($cita->consultorios as $consultorio)
+                        {{ strtoupper($consultorio->tag) }}
+                        @endforeach
+                    </td>
+                    <td>{{ strtoupper($cita->descripcion) }}</td>
+                    <td>{{ strtoupper($cita->doctor) }}</td>
+                    <td>{{ strtoupper($cita->estado) }}</td>
+                    <td>{{ strtoupper($cita->user->name) }}</td>
+                    <td>
+                        <a href="{{ route('citas.edit', $cita) }}" class="btn btn-primary">Editar</a>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        @else
+        <h1>Citas</h1>
+        <p>
+            <a href="{{ route('citas.create') }}" class="btn btn-primary">Agregar Cita</a>
+        </p>
+        <p>
+            <a href="{{ route('dashboard') }}" class="btn btn-primary">Volver</a>
+        </p>
+        @if($errors->any())
+        <div class="alert alert-danger">
+            <strong>¡Oops! Ha ocurrido un problema:</strong>
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido Materno</th>
+                    <th>Apellido Paterno</th>
+                    <th>Teléfono</th>
+                    <th>Fecha</th>
+                    <th>Consultorio</th>
+                    <th>Descripción</th>
+                    <th>Doctor</th>
+                    <th>Estado</th>
+                    <th>Usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($citas as $cita)
+                @can('update', $cita)
+                <tr>
+                    <td>{{ $cita->id }}</td>
+                    <td>
+                        <a href="{{ route('citas.show', $cita) }}">{{ strtoupper($cita->nombre) }}</a>
+                    </td>
+                    <td>{{ strtoupper($cita->apellidoma) }}</td>
+                    <td>{{ strtoupper($cita->apellidopa) }}</td>
+                    <td>{{ $cita->telefono }}</td>
+                    <td>{{ $cita->fecha->diffForHumans() }}</td>
+                    <td>
+                        @foreach ($cita->consultorios as $consultorio)
+                        {{ strtoupper($consultorio->tag) }}
+                        @endforeach
+                    </td>
+                    <td>{{ strtoupper($cita->descripcion) }}</td>
+                    <td>{{ strtoupper($cita->doctor) }}</td>
+                    <td>{{ strtoupper($cita->estado) }}</td>
+                    <td>{{ strtoupper($cita->user->name) }}</td>
+                </tr>
+                @endcan
+                @endforeach
+            </tbody>
+        </table>
+        @endif
     </div>
 </body>
 </html>

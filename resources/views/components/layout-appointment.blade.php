@@ -164,13 +164,16 @@
                         <input type="datetime-local" name="fecha" class="form-control datepicker" id="fecha" value="{{ old('fecha') }}" placeholder="Fecha de reservación" required>
                     </div>
                     <div class="col-md-4 form-group mt-3">
-                        <select name="consultorio" id="consultorio" class="form-select" required>
-                            <option value="">Selecciona el consultorio</option>
-                            <option value="guadalajara">Guadalajara</option>
-                            <option value="atotonilco">Atotonilco</option>
-                            <option value="arandas">Arandas</option>
-                        </select>
+                    <select name="consultorio[]" id="consultorio" class="form-select" required>
+                        @forelse ($consultorios as $consultorio)
+                            <option value="{{ $consultorio->id }}">{{ $consultorio->tag }}</option>
+                        @empty
+                            <option>No hay consultorios disponibles</option>
+                        @endforelse
+                    </select>
+
                     </div>
+
                     <div class="col-md-4 form-group mt-3">
                         <select name="doctor" id="doctor" class="form-select" required>
                             <option value="Iroel Alain Solis Cardenas">Iroel Alain Solis Cardenas</option>
