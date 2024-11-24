@@ -219,7 +219,7 @@
             </tbody>
         </table>
         @else
-        <h1>Citas</h1>
+        <h1>Mis Citas</h1>
         <p>
             <a href="{{ route('citas.create') }}" class="btn btn-primary">Agregar Cita</a>
         </p>
